@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chedrick Neil Rodriguez — IT student, trainer, and creative.">
+  <title>CHEDRICK.exe | More than a résumé.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/images/career-agent.jpg">
+  <link rel="preload" as="image" href="assets/images/career-team-leader.jpg">
+  <link rel="preload" as="image" href="assets/images/career-trainer.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient-background" aria-hidden="true"><span class="ambient-grid"></span><span class="ambient-vignette"></span></div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#home" data-scroll="home" aria-label="Chedrick home"><span>C</span><i></i></a>
+      <nav class="nav-list">
+        <button class="nav-item active" type="button" data-scroll="home" aria-current="page" aria-label="Home"><span class="nav-icon">⌂</span><span class="tooltip">Home</span></button>
+        <button class="nav-item" type="button" data-scroll="experience" aria-label="Work Experience"><span class="nav-icon">▣</span><span class="tooltip">Work Experience</span></button>
+        <button class="nav-item" type="button" data-scroll="education" aria-label="Education"><span class="nav-icon">◇</span><span class="tooltip">Education</span></button>
+        <button class="nav-item" type="button" data-scroll="skills" aria-label="Skills"><span class="nav-icon">✦</span><span class="tooltip">Skills</span></button>
+      </nav>
+      <div class="sidebar-footer"><a href="mailto:chedrick@example.com" class="nav-item" aria-label="Contact Chedrick"><span class="nav-icon">✉</span><span class="tooltip">Contact</span></a></div>
+    </aside>
+
+    <main class="content" id="main-content">
+      <section class="view active" id="home" aria-labelledby="home-title">
+        <div class="hero">
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/career-trainer.jpg" aria-hidden="true"><source src="assets/videos/home-montage-trial.mp4" type="video/mp4"></video>
+          <div class="hero-copy"><p class="eyebrow">CHEDRICK.exe</p><h1 id="home-title">More than<br>a <em>résumé.</em></h1><p class="lead">From global training operations to building digital experiences, this is my story so far. I’m a people-focused communicator and curious builder who brings structure, creativity, and care to every project.</p><div class="actions"><button class="button primary" type="button" data-scroll="experience">Explore My Profile</button><button class="button secondary" type="button" data-modal="resume">View Résumé</button></div></div>
+          <div class="hero-art"><button class="portrait-swap" type="button" aria-label="Show Chedrick's funny portrait" aria-pressed="false"><img class="profile-layer profile-professional is-active" src="assets/images/hero-professional-cutout.png" alt=""><img class="profile-layer profile-funny" src="assets/images/hero-funny-cutout.png" alt=""><span class="portrait-caption"><span class="portrait-caption-copy"><b>CHEDRICK NEIL RODRIGUEZ</b><span class="portrait-role-stack" aria-hidden="true"><span class="portrait-role portrait-role-professional">IT STUDENT • CORPORATE TRAINER</span><span class="portrait-role portrait-role-funny">CREATIVE</span></span></span><span class="portrait-toggle-icon" aria-hidden="true">⇄</span></span></button></div>
+        </div>
+
+        <section class="home-section resume-panel experience-panel" id="experience" aria-labelledby="experience-title">
+          <header class="section-header"><h2 id="experience-title">Work Experience</h2><div class="company-banner"><img src="assets/images/datamatics-logo-transparent.png" alt="Datamatics"><div><p>Datamatics is a global Digital Technologies, Operations, and Experiences company with delivery across four continents.</p><span>Prometric remote proctoring operations · August 2024 — Present</span></div></div></header>
+          <div class="experience-layout career-stories" role="tablist" aria-label="Career progression stories"><button class="role story active" role="tab" aria-selected="true" data-role="agent" style="--story-image:url('assets/images/career-agent.jpg');--story-position:center 58%"><small>AUG — SEP 2024</small><b>Agent</b><div class="story-details" aria-live="polite"></div></button><button class="role story" role="tab" aria-selected="false" data-role="lead" style="--story-image:url('assets/images/career-team-leader.jpg');--story-position:center 44%"><small>OCT 2024 — FEB 2025</small><b>Team Leader</b><div class="story-details" aria-live="polite"></div></button><button class="role story" role="tab" aria-selected="false" data-role="trainer" style="--story-image:url('assets/images/career-trainer.jpg');--story-position:center 38%"><small>MAR 2025 — PRESENT</small><b>Universal Trainer</b><div class="story-details" aria-live="polite"></div></button></div>
+        </section>
+
+        <section class="home-section resume-panel education-panel" id="education" aria-labelledby="education-title">
+          <header class="section-header">
+            <h2 id="education-title">Education</h2>
+            <p>Building a foundation for a career in technology.</p>
+          </header>
+          <div class="education-list">
+            <article class="education-hero school-active" tabindex="0" aria-labelledby="pup-title" aria-describedby="pup-description">
+              <div class="school-copy">
+                <img class="school-logo" src="assets/images/pup-logo.png" alt="Polytechnic University of the Philippines seal" width="88" height="88">
+                <p class="eyebrow">2024 — PRESENT</p>
+                <h3 id="pup-title">Polytechnic University<br>of the Philippines</h3>
+                <p class="school-course">Bachelor of Science in Information Technology</p>
+                <div class="school-details"><div><p class="eyebrow">MY ACADEMIC STORY</p><p id="pup-description">Your PUP story goes here. Add a short description of your university experience, projects, and what you are learning.</p></div></div>
+              </div>
+              <div class="campus-art"><img src="assets/images/pup-campus.png" alt="PUP campus monument" loading="lazy" width="515" height="388"></div>
+            </article>
+            <article class="education-hero" tabindex="0" aria-labelledby="pasig-science-title" aria-describedby="pasig-science-description">
+              <div class="school-copy">
+                <img class="school-logo" src="assets/images/pasig-science-logo.png" alt="Pasig City Science High School seal" width="88" height="88">
+                <p class="eyebrow">2018 — 2024</p>
+                <h3 id="pasig-science-title">Pasig City Science<br>High School</h3>
+                <div class="school-details"><div><p class="eyebrow">MY ACADEMIC STORY</p><p id="pasig-science-description">Your high school story goes here. Add a short description of your school experience, activities, and favorite memories.</p></div></div>
+              </div>
+              <div class="campus-art"><img src="assets/images/pasig-science-campus.png" alt="Pasig City Science High School building" loading="lazy" width="720" height="480"></div>
+            </article>
+          </div>
+          <h3 class="subheading">Project Bay</h3>
+          <div class="empty-state"><span>+</span><div><b>Projects in progress</b><p>Academic projects, programming exercises, and implementation notes will appear here as they are completed.</p></div></div>
+        </section>
+
+        <section class="home-section resume-panel skills-panel" id="skills" aria-labelledby="skills-title"><header class="section-header"><h2 id="skills-title">Skills</h2><p>Practical strengths developed through work, study, and creative practice.</p></header><div class="filter-tabs" role="tablist" aria-label="Skill categories"><button class="filter active" data-skill-filter="web">Programming & Web</button><button class="filter" data-skill-filter="creative">Creative Tools</button><button class="filter" data-skill-filter="communication">Communication & Training</button><button class="filter" data-skill-filter="operations">Operations</button></div><div class="skills-grid" id="skills-grid"></div><section class="evidence-section" aria-labelledby="evidence-title"><header><h3 id="evidence-title">Evidence of growth</h3><p>Each chapter informs the skills being built and applied.</p></header><div class="evidence-grid"><button class="evidence-card" type="button" data-evidence="training"><span>01</span><b>Global training</b><p>Facilitation, cross-cultural communication, and knowledge transfer.</p></button><button class="evidence-card" type="button" data-evidence="operations"><span>02</span><b>Live operations</b><p>Coordination, incident reporting, and quality compliance.</p></button><button class="evidence-card" type="button" data-evidence="digital"><span>03</span><b>Digital practice</b><p>Web foundations and creative tools applied through study and personal work.</p></button></div></section></section>
+      </section>
+
+    </main>
+  </div>
+  <!-- The red layer sweeps vertically between sections. -->
+  <div class="transition-curtain" id="transition-curtain" aria-hidden="true"></div>
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button class="modal-close" type="button" aria-label="Close dialog">×</button><p class="eyebrow" id="modal-kicker"></p><h2 id="modal-title"></h2><div id="modal-content"></div></div></div>
+  <nav class="mobile-nav" aria-label="Mobile navigation"><button data-scroll="home" class="active" aria-label="Home">⌂</button><button data-scroll="experience" aria-label="Work Experience">▣</button><button data-scroll="education" aria-label="Education">◇</button><button data-scroll="skills" aria-label="Skills">✦</button></nav>
+  <script src="script.js"></script>
+</body>
+</html>
