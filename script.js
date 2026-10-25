@@ -331,7 +331,7 @@ document.addEventListener("click", event => {
   }
 });
 
-document.querySelectorAll("[data-modal]").forEach(button => button.addEventListener("click", () => openModal("Résumé", "DOCUMENT", "<p>A résumé file has not been added yet.</p><p>Place the approved PDF in <code>assets/documents</code> and update this button with its real link.</p>")));
+document.querySelectorAll("[data-modal]").forEach(button => button.addEventListener("click", () => openModal("Résumé", "DOCUMENT", "<p>A résumé file has not been added yet.</p>")));
 modal.querySelector(".modal-close").addEventListener("click", closeModal);
 modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
 document.addEventListener("keydown", event => {
