@@ -2,16 +2,62 @@
 
 // Content is kept in data objects so the portfolio can grow without duplicating HTML.
 const roles = {
-  trainer: { title: "Universal Trainer", dates: "March 2025 — Present", description: "Now train and support teams across Manila, Peru, and India, adjusting my delivery to fit each team’s culture and operational setup. I work closely with cross-functional teams and leadership to keep processes aligned and updates cascaded on time, and I keep high-volume sessions engaging so people retain what they learn and stay ready for the floor." },
-  lead: { title: "Subject Matter Expert / Team Leader", dates: "October 2024 — February 2025", description: "Moved into leadership within two months, guiding a team of agents through live exam events and resolving concerns as they came up. I held the team to its KPIs, Zero Tolerance Policies, and QA standards, and made time for one-on-one coaching so teammates could grow while performance stayed strong." },
-  agent: { title: "Agent", dates: "August 2024 — September 2024", description: "Started as a remote proctor for high-stakes exams, where my job was protecting exam security from the first minute to the last. I documented incidents through CRM platforms with clear, detailed reports and professional correspondence, and stepped in on customer service calls and live chat whenever the team needed support." }
+  trainer: {
+    title: "Universal Trainer",
+    dates: "March 2025 — Present",
+    description: "Now train and support teams across Manila, Peru, and India, adjusting my delivery to fit each team’s culture and operational setup. I work closely with cross-functional teams and leadership to keep processes aligned and updates cascaded on time, and I keep high-volume sessions engaging so people retain what they learn and stay ready for the floor.",
+    bullets: [
+      "Managed and facilitated training programs across diverse teams in Peru, India, and Manila, adapting delivery approaches to different cultural and operational environments.",
+      "Coordinated with cross-functional teams and leadership to ensure consistent process alignment, timely cascading of updates, and effective resolution of training concerns.",
+      "Successfully handled high-volume training sessions while maintaining engagement, knowledge retention, process accuracy, and operational readiness."
+    ]
+  },
+  lead: {
+    title: "Subject Matter Expert / Team Leader",
+    previewLabel: "SUBJECT MATTER EXPERT / TEAM LEADER",
+    dates: "October 2024 — February 2025",
+    description: "Moved into leadership within two months, guiding a team of agents through live exam events and resolving concerns as they came up. I held the team to its KPIs, Zero Tolerance Policies, and QA standards, and made time for one-on-one coaching so teammates could grow while performance stayed strong.",
+    bullets: [
+      "Led a team of agents to ensure seamless operations during live events by efficiently addressing concerns and providing solutions.",
+      "Maintained exceptional performance by consistently achieving key performance indicators (KPIs), adhering to Zero Tolerance Policies, and meeting quality assurance (QA) standards.",
+      "Provided personalized coaching and mentorship to team members, fostering professional growth and cultivating a culture of positive leadership."
+    ]
+  },
+  agent: {
+    title: "Agent",
+    dates: "August 2024 — September 2024",
+    description: "Started as a remote proctor for high-stakes exams, where my job was protecting exam security from the first minute to the last. I documented incidents through CRM platforms with clear, detailed reports and professional correspondence, and stepped in on customer service calls and live chat whenever the team needed support.",
+    bullets: [
+      "Tasked with remotely proctoring a variety of high-stakes exams, responsible for promoting and maintaining the highest level of exam security.",
+      "Documented exam incidents with detailed reports using CRM platforms and professional correspondence.",
+      "Assisted in responding to customer service calls and live chat as needed."
+    ]
+  }
 };
 
 const skills = {
-  web: [ ["HTML", "Markup for clear, semantic web pages.", "</>"], ["CSS", "Responsive layouts and visual systems.", "{}"], ["JavaScript", "Interactive browser experiences.", "JS"] ],
-  creative: [ ["CapCut for Windows", "Video editing and social-ready content.", "▶"], ["DaVinci Resolve", "Editing workflows and post-production.", "◐"], ["Canva", "Fast visual communication and layout.", "✳"], ["Photoshop", "Image editing and creative assets.", "PS"] ],
-  communication: [ ["Training Facilitation", "Creating engaging learning sessions.", "↗"], ["Cross-cultural Communication", "Working effectively with global teams.", "◎"], ["Knowledge Transfer", "Helping teams retain and apply processes.", "⇄"], ["Coaching", "Supporting individual development.", "+" ] ],
-  operations: [ ["Process Documentation", "Keeping guidance clear and usable.", "≡"], ["Operational Coordination", "Maintaining readiness across moving parts.", "⊞"], ["Incident Reporting", "Accurate, professional records under pressure.", "!"], ["Quality Compliance", "Following important standards consistently.", "✓"] ]
+  web: [
+    ["C", "", "assets/images/skills/c.webp"],
+    ["Java", "", "assets/images/skills/java.webp"],
+    ["Python", "", "assets/images/skills/python.webp"],
+    ["HTML", "", "assets/images/skills/html-light.webp"],
+    ["CSS", "", "assets/images/skills/css-light.webp"],
+    ["JavaScript", "", "assets/images/skills/javascript-light.webp"],
+    ["MySQL", "", "assets/images/skills/mysql.webp"],
+    ["PostgreSQL", "", "assets/images/skills/postgres.webp"]
+  ],
+  tools: [
+    ["CapCut", "", "assets/images/skills/capcut.webp"],
+    ["DaVinci Resolve", "", "assets/images/skills/davinciresolve.webp"],
+    ["Photoshop", "", "assets/images/skills/adobe-photoshop.webp"],
+    ["Canva", "", "assets/images/skills/canva-com-logo.webp"],
+    ["Excel", "", "assets/images/skills/microsoft-excel.webp"],
+    ["Google Sheets", "", "assets/images/skills/google-sheets.webp"],
+    ["GitHub", "", "assets/images/skills/github-light.webp"],
+    ["Git", "", "assets/images/skills/git.webp"]
+  ],
+  communication: [ ["Facilitation", "", "↗"], ["Cross-cultural", "", "◎"], ["Knowledge Transfer", "", "⇄"], ["Coaching", "", "+" ] ],
+  operations: [ ["Documentation", "", "≡"], ["Coordination", "", "⊞"], ["Incident Reporting", "", "!"], ["Quality Compliance", "", "✓"] ]
 };
 
 const evidence = {
@@ -61,6 +107,14 @@ function syncNavigation(target) {
   });
 }
 
+function isAtPortfolioBottom() {
+  if (usesPageScroll()) {
+    const page = document.documentElement;
+    return window.scrollY + window.innerHeight >= page.scrollHeight - 8;
+  }
+  return content.scrollTop + content.clientHeight >= content.scrollHeight - 8;
+}
+
 function scrollToHomeSection(target) {
   const scroll = behavior => {
     if (target === "home") scrollPortfolioTo(0, behavior);
@@ -88,7 +142,8 @@ function scrollToHomeSection(target) {
 function renderStoryPreviews() {
   document.querySelectorAll(".story[data-role]").forEach(story => {
     const role = roles[story.dataset.role];
-    story.querySelector(".story-details").innerHTML = `<div><p class="eyebrow">CAREER STORY / ${role.title}</p><p>${role.description}</p></div>`;
+    const label = role.previewLabel ? `<p class="eyebrow">${role.previewLabel}</p>` : "";
+    story.querySelector(".story-details").innerHTML = `<div>${label}<p>${role.description}</p></div>`;
   });
 }
 
@@ -97,9 +152,9 @@ async function prepareCareerInteractions() {
   if (!careerStories) return;
 
   const sources = [
-    "assets/images/career-agent.jpg",
-    "assets/images/career-team-leader.jpg",
-    "assets/images/career-trainer.jpg"
+    "assets/images/career-agent.webp",
+    "assets/images/career-team-leader.webp",
+    "assets/images/career-trainer.webp"
   ];
   const imageReady = sources.map(source => {
     const image = new Image();
@@ -124,12 +179,20 @@ async function prepareCareerInteractions() {
 
 function renderFullRole(roleKey) {
   const role = roles[roleKey];
-  const gallery = Array.from({ length: 16 }, (_, index) => `<div class="gallery-placeholder"><span>PHOTO ${String(index + 1).padStart(2, "0")}</span><small>${role.title} gallery slot</small></div>`).join("");
-  openModal(role.title, "CAREER STORY / FULL DETAILS", `<div class="career-detail-layout"><div class="career-detail-copy"><p class="meta">${role.dates}</p><div class="role-credentials"><span>PROMETRIC REMOTE PROCTORING</span><span>${role.dates.toUpperCase()}</span></div><p class="story-summary">${role.description}</p></div><div class="story-gallery" aria-label="${role.title} photo gallery"><div class="story-gallery-grid">${gallery}</div></div></div>`, "career-modal");
+  const bulletList = role.bullets.map(item => `<li>${item}</li>`).join("");
+  openModal(role.title, "FULL DETAILS", `<div class="career-detail-layout"><div class="career-detail-copy"><p class="meta">${role.dates}</p><ul class="career-full-list">${bulletList}</ul></div></div>`, "career-modal");
 }
 
 function renderSkills(category) {
-  document.getElementById("skills-grid").innerHTML = skills[category].map(([name, description, symbol]) => `<button class="skill-card" type="button" data-skill="${name}" data-description="${description}"><span class="skill-symbol">${symbol}</span><b>${name}</b><p>${description}</p></button>`).join("");
+  const grid = document.getElementById("skills-grid");
+  grid.scrollLeft = 0;
+  grid.innerHTML = skills[category].map(([name, description, symbol]) => {
+    const icon = symbol.endsWith(".webp")
+      ? `<img src="${symbol}" alt="" loading="lazy" decoding="async">`
+      : symbol;
+    const modalDescription = description || "Will be added.";
+    return `<button class="skill-card" type="button" data-skill="${name}" data-description="${modalDescription}"><span class="skill-symbol">${icon}</span><b>${name}</b></button>`;
+  }).join("");
   enableDepthEffects();
 }
 
@@ -139,6 +202,7 @@ function openModal(title, kicker, content, variant = "") {
   document.getElementById("modal-kicker").textContent = kicker;
   document.getElementById("modal-content").innerHTML = content;
   modal.classList.toggle("career-modal", variant === "career-modal");
+  modal.classList.toggle("company-gallery-modal", variant === "company-gallery-modal");
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -151,6 +215,7 @@ function openModal(title, kicker, content, variant = "") {
 function closeModal() {
   modal.classList.remove("open");
   modal.classList.remove("career-modal");
+  modal.classList.remove("company-gallery-modal");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
   document.querySelector(".app-shell").inert = false;
@@ -179,7 +244,7 @@ function setupSectionObservers() {
 
   const progressObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) syncNavigation(entry.target.id);
+      if (entry.isIntersecting) syncNavigation(isAtPortfolioBottom() ? "contact" : entry.target.id);
     });
   }, { root: observerRoot, rootMargin: "-18% 0px -62% 0px", threshold: 0 });
   document.querySelectorAll(".home-section").forEach(section => progressObserver.observe(section));
@@ -230,7 +295,7 @@ function trackSurfacePointer(surface, update, reset) {
 // Restrained depth keeps large containers calm while their smaller cards respond locally.
 function enableDepthEffects() {
   if (reducedMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-  document.querySelectorAll(".hero,.resume-panel,.skill-card,.interest-card,.education-hero,.evidence-card,.role.story").forEach(surface => {
+  document.querySelectorAll(".hero,.resume-panel,.skill-card,.education-hero,.evidence-card,.role.story").forEach(surface => {
     if (surface.dataset.depthReady) return;
     surface.dataset.depthReady = "true";
     surface.classList.add("depth-surface");
@@ -255,7 +320,11 @@ document.querySelectorAll("[data-scroll]").forEach(item => item.addEventListener
 // Keep navigation in sync with the section currently nearest the top of Home.
 function updateNavigationOnScroll() {
   if (isTransitioning) return;
-  const sectionNames = ["experience", "education", "skills"];
+  if (isAtPortfolioBottom()) {
+    syncNavigation("contact");
+    return;
+  }
+  const sectionNames = ["experience", "education", "skills", "contact"];
   const current = sectionNames.reduce((active, name) => {
     const top = document.getElementById(name).getBoundingClientRect().top;
     return top <= 170 ? name : active;
@@ -324,14 +393,18 @@ document.querySelectorAll("[data-skill-filter]").forEach(button => button.addEve
 document.addEventListener("click", event => {
   const skill = event.target.closest("[data-skill]");
   const evidenceCard = event.target.closest("[data-evidence]");
-  if (skill) openModal(skill.dataset.skill, "SKILL PROFILE", `<p>${skill.dataset.description}</p><p>Examples and supporting projects can be added here as they become available.</p>`);
+  const companyGallery = event.target.closest("[data-company-gallery]");
+  if (skill?.dataset.description) openModal(skill.dataset.skill, "SKILL PROFILE", `<p>${skill.dataset.description}</p>`);
+  if (companyGallery) {
+    const placeholders = Array.from({ length: 16 }, (_, index) => `<div class="company-gallery-placeholder"><span>PHOTO ${String(index + 1).padStart(2, "0")}</span></div>`).join("");
+    openModal("Photo Gallery", "DATAMATICS", `<p class="gallery-coming-soon">Work photos will be added soon.</p><div class="company-gallery-grid" aria-label="Datamatics photo placeholders">${placeholders}</div>`, "company-gallery-modal");
+  }
   if (evidenceCard) {
     const item = evidence[evidenceCard.dataset.evidence];
     openModal(item.title, item.kicker, `<p>${item.description}</p><ul>${item.connections.map(connection => `<li>${connection}</li>`).join("")}</ul>`);
   }
 });
 
-document.querySelectorAll("[data-modal]").forEach(button => button.addEventListener("click", () => openModal("Résumé", "DOCUMENT", "<p>A résumé file has not been added yet.</p>")));
 modal.querySelector(".modal-close").addEventListener("click", closeModal);
 modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
 document.addEventListener("keydown", event => {
